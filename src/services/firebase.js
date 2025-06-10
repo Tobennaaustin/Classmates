@@ -10,13 +10,12 @@ import {
 import { getFirestore, doc, setDoc, getDoc} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDvXS-klw-HKReF9aoQPOdoqgwZ-ClhRDw",
-  authDomain: "classmates-1a18d.firebaseapp.com",
-  projectId: "classmates-1a18d",
-  storageBucket: "classmates-1a18d.firebasestorage.app",
-  messagingSenderId: "812020416911",
-  appId: "1:812020416911:web:952943ea2d0f9a94e28bfa",
-  measurementId: "G-ML6Y7NBPR7",
+  apiKey: "AIzaSyAAANCF6vsT3bn5jOLSEq1QwvdRS_e84h4",
+  authDomain: "classmate-mvp.firebaseapp.com",
+  projectId: "classmate-mvp",
+  storageBucket: "classmate-mvp.firebasestorage.app",
+  messagingSenderId: "804205725994",
+  appId: "1:804205725994:web:408aae817eea6f33eb3653",
 };
 
 const app = initializeApp(firebaseConfig);

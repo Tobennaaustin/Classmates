@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+.color{
+  color:hsl(180 100% 25.1%);
+}
+.bg-color{
+  background-color:hsl(180 100% 25.1%);
+}
+
+.text-color{
+  color: hsl(0 0% 45.1%);
+}

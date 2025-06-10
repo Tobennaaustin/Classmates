@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
+  sendEmailVerification
 } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
@@ -33,24 +34,35 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
+      // Set display name to entered name
       await updateProfile(res.user, {
-        displayName: email.split("@")[0],
+        displayName: name || email.split("@")[0],
       });
 
       await storeUserInfo({
         ...res.user,
-        displayName: email.split("@")[0],
+        displayName: name || email.split("@")[0],
       });
 
-      navigate("/dashboard");
+      // Send verification email
+      await sendEmailVerification(res.user);
+
+
+      alert(
+        "Account created! Please check your email to verify your account."
+      );
+      navigate("/login");
     } catch (error) {
       alert(error.message);
     }
+
     setLoading(false);
   };
+
 
   const handleGoogleSignup = async () => {
     setLoading(true);
@@ -77,7 +89,7 @@ const Signup = () => {
           {/* Header */}
           <div className="text-center mb-6">
             <Link
-              href="/"
+              to="/"
               className="flex items-center justify-center  pt-6 space-x-2 mb-4"
             >
               <BookText className="h-8 w-8 text-primary" />
@@ -257,6 +269,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
