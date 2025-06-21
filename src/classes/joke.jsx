@@ -32,7 +32,7 @@ import {
 import Sidebar from "../components/dashboard/sidebar";
 import Header from "../components/dashboard/Header";
 
-const ClassChat = () => {
+const Joke = () => {
   const { id: classId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -108,7 +108,6 @@ const ClassChat = () => {
           alert("Please login to continue");
           return navigate("/login");
         }
-
       });
 
       const classRef = doc(db, "classrooms", classId);
@@ -207,31 +206,39 @@ const ClassChat = () => {
     alert("Copied to clipboard!");
   };
 
-   const formatTime = (timestamp) => {
-     if (!timestamp) return "";
-     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-     return new Intl.DateTimeFormat("en-US", {
-       hour: "2-digit",
-       minute: "2-digit",
-       hour12: true,
-     }).format(date);
+  const formatTime = (timestamp) => {
+    if (!timestamp) return "";
+    const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+    return new Intl.DateTimeFormat("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }).format(date);
+  };
 
-   };
+  const isOwner = auth.currentUser?.uid === classInfo?.ownerId;
 
-   const ModalOverlay = ({ isOpen, onClose, children }) => {
-     if (!isOpen) return null;
+  const closeAllModals = () => {
+    setShowExitModal(false);
+    setShowDeleteModal(false);
+    setShowInviteModal(false);
+    setShowDropdown(false);
+  };
 
-     return (
-       <div
-         className="fixed inset-0 z-50 flex items-end justify-center md:items-center"
-         onClick={onClose}
-       >
-         {/* Backdrop */}
-         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" />
+  const ModalOverlay = ({ isOpen, onClose, children }) => {
+    if (!isOpen) return null;
 
-         {/* Modal Content */}
-         <div
-           className={`
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-end justify-center md:items-center"
+        onClick={onClose}
+      >
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" />
+
+        {/* Modal Content */}
+        <div
+          className={`
             relative w-full max-w-md mx-4 mb-0 md:mb-4
             bg-white rounded-t-3xl md:rounded-2xl
             shadow-2xl transform transition-all duration-300 ease-out
@@ -241,18 +248,16 @@ const ClassChat = () => {
                 : "translate-y-full opacity-0"
             }
           `}
-           onClick={(e) => e.stopPropagation()}
-         >
-           {children}
-         </div>
-       </div>
-     );
-   };
-
-  const isOwner = auth.currentUser?.uid === classInfo?.ownerId;
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <div
         className={`fixed z-50 h-full bg-gray-900 transition-transform duration-300 ease-in-out w-64 md:relative md:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -273,17 +278,14 @@ const ClassChat = () => {
 
         <div className="p-4 h-screen flex flex-col">
           {classInfo && (
-            <div className="flex p-4 rounded-lg justify-between items-center relative">
+            <div className="flex p-6 rounded-lg justify-between items-center relative">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
-                  {/* <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
                     <Hash className="w-6 h-6 text-white" />
-                  </div> */}
+                  </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 capitalize">
-                      <span className="text-purple-600 bold mr-2">
-                        #
-                      </span>
                       {classInfo.name}
                     </h2>
                     <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -301,14 +303,14 @@ const ClassChat = () => {
                   </div>
                 </div>
 
-                {/* <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-gray-700">
                     Join Code:
                   </span>
                   <code className="px-3 py-1 bg-[#9810fa]/10 text-[#9810fa] rounded-lg text-sm font-mono font-semibold border border-[#9810fa]/20">
                     {classInfo.joinCode}
                   </code>
-                </div> */}
+                </div>
               </div>
 
               <div className="flex items-center gap-3">
@@ -321,12 +323,14 @@ const ClassChat = () => {
                 </button>
 
                 <div className="relative">
-                  <button onClick={() => setShowDropdown(!showDropdown)}>
+                  <button
+                    onClick={() => setShowDropdown(!showDropdown)}
+                  >
                     <MoreVertical className="w-5 h-5 text-gray-700" />
                   </button>
 
                   {showDropdown && (
-                    <div className="absolute right-0 top-14 bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl rounded-2xl w-56 z-20 overflow-hidden">
+                    <div className="relative right-0 top-14 bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl rounded-2xl w-56 z-20 overflow-hidden">
                       <button
                         className="flex items-center gap-3 w-full text-left px-4 py-3 hover:bg-gray-50/80 transition-colors text-gray-700"
                         onClick={() => {
@@ -365,8 +369,6 @@ const ClassChat = () => {
               </div>
             </div>
           )}
-
-          <div className="border-b border-gray-300 mb-4"></div>
 
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 flex-1 flex flex-col overflow-hidden">
             {/* Chat header */}
@@ -470,9 +472,9 @@ const ClassChat = () => {
               })}
             </div>
 
-            <div className="border-t border-gray-100 p-4 bg-gray-50 rounded-b-xl">
-              <div className="flex items-center space-x-3">
-                <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-200 rounded-lg transition-colors">
+            <div className="border-t border-gray-100/50 p-4 bg-white/80 backdrop-blur-sm">
+              <div className="flex items-end gap-3">
+                <button className="p-3 text-gray-500 hover:text-[#9810fa] hover:bg-[#9810fa]/10 rounded-xl transition-all duration-200">
                   <Paperclip className="w-5 h-5" />
                 </button>
 
@@ -481,11 +483,11 @@ const ClassChat = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Type a message..."
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+                    placeholder="Type your message..."
+                    className="w-full px-4 py-3 border-2 border-gray-200/50 rounded-2xl resize-none focus:outline-none focus:border-[#9810fa]/50 focus:ring-4 focus:ring-[#9810fa]/10 bg-white/80 backdrop-blur-sm transition-all duration-200"
                     rows="1"
                     style={{
-                      minHeight: "44px",
+                      minHeight: "48px",
                       maxHeight: "120px",
                     }}
                   />
@@ -494,9 +496,9 @@ const ClassChat = () => {
                 <button
                   onClick={sendMessage}
                   disabled={!message.trim()}
-                  className={`p-3 rounded-xl transition-all ${
+                  className={`p-3 rounded-2xl transition-all duration-200 ${
                     message.trim()
-                      ? "bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                      ? "bg-gradient-to-r from-[#9810fa] to-purple-600 hover:from-[#9810fa]/90 hover:to-purple-600/90 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
                       : "bg-gray-200 text-gray-400 cursor-not-allowed"
                   }`}
                 >
@@ -662,6 +664,4 @@ const ClassChat = () => {
   );
 };
 
-export default ClassChat;
-
-
+export default Joke;

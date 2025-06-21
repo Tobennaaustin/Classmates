@@ -11,6 +11,8 @@ import CreateClass from "../classes/CreateClass";
 import JoinClass from "../classes/JoinClass";
 import ClassmateAI from "../AI/AI";
 import ProfilePage from "../pages/profile";
+import NotFound from "../pages/NotFound";
+import Joke from "../classes/joke";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +36,8 @@ const AppRoutes = () => {
         <Route path="join-class" element={<JoinClass />} />
         <Route path="ai-assistant" element={<ClassmateAI />} />
         <Route path="profile" element={<ProfilePage/>} />
+        <Route path="joke" element={<Joke />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
