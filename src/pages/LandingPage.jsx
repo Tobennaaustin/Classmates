@@ -12,6 +12,7 @@ import {
   Play,
 } from "lucide-react";
 
+
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
@@ -19,6 +20,7 @@ const LandingPage = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
 
   const words = ["Learning", "Collaboration", "Success", "Growth"];
   const fullText = "Supercharge Your ";
@@ -92,6 +94,8 @@ const LandingPage = () => {
     },
   ];
 
+  const windows = typeof window !== "undefined" ? window : { location: { href: "/" } };
+
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-hidden relative">
       {/* Subtle Background Elements */}
@@ -158,39 +162,29 @@ const LandingPage = () => {
       {/* Navigation */}
       <nav className="relative z-10 px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="flex items-center space-x-2">
-          <div
-            style={{
-              background: "linear-gradient(to right, #611f69, #7c3aed)",
-            }}
-            className="rounded-lg flex items-center justify-center w-8 h-8 bg-gradient-to-r"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-book-text h-6 w-6 text-purple-600"
           >
-            <BookOpen className="w-5 h-5 text-white" />
-          </div>
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path>
+            <path d="M8 11h8"></path>
+            <path d="M8 7h6"></path>
+          </svg>
           <span className="text-xl font-bold text-gray-900">Classmate</span>
         </div>
-        <div className="hidden md:flex space-x-6">
-          <a
-            href="#features"
-            className="text-gray-600 hover:text-purple-600 transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="#about"
-            className="text-gray-600 hover:text-purple-600 transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            className="text-gray-600 hover:text-purple-600 transition-colors"
-          >
-            Contact
-          </a>
-        </div>
+
         <button
           className="px-6 py-2 rounded-full text-white font-medium transition-all transform hover:scale-105 shadow-md hover:shadow-lg"
           style={{ background: "linear-gradient(to right, #611f69, #7c3aed)" }}
+          onClick={() => (windows.location.href = "/signup")}
         >
           Get Started
         </button>
@@ -214,9 +208,6 @@ const LandingPage = () => {
               <Sparkles className="absolute -top-2 -right-8 w-8 h-8 text-purple-500 animate-bounce" />
             </span>
             <br />
-            <span className="text-4xl md:text-6xl text-gray-700">
-              Study Space
-            </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Create or join a group, collaborate in real time, share files, talk,
@@ -232,6 +223,7 @@ const LandingPage = () => {
               style={{
                 background: "linear-gradient(to right, #611f69, #7c3aed)",
               }}
+              onClick={() => (windows.location.href = "/signup")}
             >
               <span>Start Learning</span>
               <ArrowRight className="w-5 h-5" />
@@ -399,6 +391,7 @@ const LandingPage = () => {
             style={{
               background: "linear-gradient(to right, #611f69, #7c3aed)",
             }}
+            onClick={() => (windows.location.href = "/signup")}
           >
             Get Started Free
           </button>
@@ -409,14 +402,22 @@ const LandingPage = () => {
       <footer className="relative z-10 px-6 py-8 border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{
-                background: "linear-gradient(to right, #611f69, #7c3aed)",
-              }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-book-text h-6 w-6 text-purple-600"
             >
-              <BookOpen className="w-5 h-5 text-white" />
-            </div>
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path>
+              <path d="M8 11h8"></path>
+              <path d="M8 7h6"></path>
+            </svg>
             <span className="text-xl font-bold text-gray-900">Classmate</span>
           </div>
           <div className="text-gray-500">
