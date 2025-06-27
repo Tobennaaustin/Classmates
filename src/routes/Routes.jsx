@@ -13,6 +13,7 @@ import ClassmateAI from "../AI/AI";
 import ProfilePage from "../pages/profile";
 import NotFound from "../pages/NotFound";
 import Joke from "../classes/joke";
+import PrivacyPolicy from "../pages/privacyPolicy"
 
 const AppRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         <Route path="ai-assistant" element={<ClassmateAI />} />
         <Route path="profile" element={<ProfilePage/>} />
         <Route path="joke" element={<Joke />} />
+        <Route path="privacy" element={<PrivacyPolicy/>}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

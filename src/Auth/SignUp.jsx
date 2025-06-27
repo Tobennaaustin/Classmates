@@ -179,6 +179,8 @@ const Signup = () => {
               />
             </div>
 
+            {/* privacy field */}
+            <p>By signing up you agree with our <Link to="/privacy-policy">Privacy Policy</Link></p>
             {/* Submit Button */}
             <button
               type="submit"
