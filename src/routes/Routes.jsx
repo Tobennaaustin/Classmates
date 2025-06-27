@@ -13,7 +13,7 @@ import ClassmateAI from "../AI/AI";
 import ProfilePage from "../pages/profile";
 import NotFound from "../pages/NotFound";
 import Joke from "../classes/joke";
-import PrivacyPolicy from "../pages/privacyPolicy"
+import PrivacyPolicy from "../pages/privacyPolicy";
 
 const AppRoutes = () => {
   return (
