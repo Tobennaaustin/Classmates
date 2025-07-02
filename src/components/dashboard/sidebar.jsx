@@ -84,7 +84,7 @@ const Sidebar = ({ userClasses }) => {
     My Classes
   </div>
 
-  <div className="max-h-[300px] overflow-y-auto pr-2 space-y-1 ">
+  <div className="max-h-[300px] overflow-y-auto pr-2 space-y-1 custom-scrollbar">
     {userClasses && userClasses.length > 0 ? (
       userClasses.map((cls) => (
         <NavLink

@@ -379,7 +379,7 @@ const ClassChat = () => {
               </h3>
             </div>
 
-            <div className="flex-1 overflow-y-auto space-y-4 p-6 bg-gradient-to-b from-white/50 to-gray-50/30">
+            <div className="flex-1 overflow-y-auto custom-scrollbar space-y-4 p-6 bg-gradient-to-b from-white/50 to-gray-50/30">
               {messages.length === 0 && (
                 <div className="text-center mt-20">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -452,7 +452,7 @@ const ClassChat = () => {
 
                       {/* Message bubble */}
                       <div
-                        className={`p-4 rounded-2xl shadow-sm ${
+                        className={`p-4 rounded-2xl shadow-sm max-w-xs lg:max-w-md xl:max-w-2xl ${
                           owner && !isMine
                             ? "bg-gradient-to-br from-[#9810fa]/90 to-purple-600/90 text-white rounded-bl-md"
                             : isMine
