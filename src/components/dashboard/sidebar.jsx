@@ -14,7 +14,7 @@ const Sidebar = ({ userClasses }) => {
   };
 
   return (
-    <aside className="w-64 bg-gray-900 text-white flex flex-col justify-between h-screen sticky top-0">
+    <aside className="w-64 bg-side text-white flex flex-col justify-between h-screen sticky top-0">
       <div>
         {/* App title */}
         <Link class="flex items-center space-x-2 p-6" to="/dashboard">
@@ -34,7 +34,7 @@ const Sidebar = ({ userClasses }) => {
             <path d="M8 11h8"></path>
             <path d="M8 7h6"></path>
           </svg>
-          
+
           <span class="font-bold sm:inline-block text-lg">Classmate</span>
         </Link>
 
@@ -44,7 +44,7 @@ const Sidebar = ({ userClasses }) => {
             to="/dashboard"
             className={({ isActive }) =>
               `flex items-center px-3 py-1 rounded-md transition ${
-                isActive ? "bg-gray-800" : "hover:bg-gray-800"
+                isActive ? "bg-slate" : "hover:bg-[#83388a]"
               }`
             }
           >
@@ -56,7 +56,7 @@ const Sidebar = ({ userClasses }) => {
             to="/create-class"
             className={({ isActive }) =>
               `flex items-center px-3 py-1 rounded-md transition ${
-                isActive ? "bg-gray-800" : "hover:bg-gray-800"
+                isActive ? "bg-slate" : "hover:bg-[#83388a]"
               }`
             }
           >
@@ -68,7 +68,7 @@ const Sidebar = ({ userClasses }) => {
             to="/join-class"
             className={({ isActive }) =>
               `flex items-center px-3 py-1 rounded-md transition ${
-                isActive ? "bg-gray-800" : "hover:bg-gray-800"
+                isActive ? "bg-slate" : "hover:bg-[#83388a]"
               }`
             }
           >
@@ -90,7 +90,11 @@ const Sidebar = ({ userClasses }) => {
                   <NavLink
                     key={cls.id}
                     to={`/class/${cls.id}`}
-                    className="text-base px-1 py-1 flex items-center space-x-2 p-6 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition"
+                    className={({ isActive }) =>
+                      `transition text-base px-1 py-1 flex items-center space-x-2 p-6 text-gray-300 rounded-md transition${
+                        isActive ? "bg-slate" : "hover:bg-[#83388a]"
+                      }`
+                    }
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

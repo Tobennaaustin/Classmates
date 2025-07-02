@@ -167,6 +167,7 @@
 import { useEffect, useState } from "react";
 import { db, auth } from "../services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+
 import {
   collection,
   query,
@@ -178,6 +179,7 @@ import {
 import Sidebar from "../components/dashboard/sidebar";
 import Header from "../components/dashboard/Header";
 import { Link } from "react-router-dom";
+import Quickaction from "../components/dashboard/quickaction";
 
 const Dashboard = () => {
   const [classes, setClasses] = useState([]);
@@ -242,49 +244,8 @@ const Dashboard = () => {
               Here's what's happening in your Classmate.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold mb-2">Create a New Class</h3>
-              <p className="text-sm text-gray-500 mb-4">
-                Start a new virtual classroom and invite members.
-              </p>
-              <Link
-                to="/create-class"
-                className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 inline-block"
-              >
-                Create Class
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold mb-2">
-                Join an Existing Class
-              </h3>
-              <p className="text-sm text-gray-500 mb-4">
-                Enter a join code to become part of a class.
-              </p>
-              <Link
-                to="/join-class"
-                className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 inline-block"
-              >
-                Join Class
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-lg font-semibold mb-2">
-                Classmate AI Assistant
-              </h3>
-              <p className="text-sm text-gray-500 mb-4">
-                Get AI-powered teaching suggestions and answers instantly.
-              </p>
-              <Link
-                to="/ai-assistant"
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 inline-block"
-              >
-                Go to AI Assistant
-              </Link>
-            </div>
-          </div>
+          
+          <Quickaction />
 
           <div>
             <h2 className="text-xl font-semibold mb-4">My Classes</h2>

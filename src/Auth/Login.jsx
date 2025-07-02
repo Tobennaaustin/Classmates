@@ -82,7 +82,7 @@ const Login = () => {
               to="/"
               className="flex items-center justify-center  pt-6 space-x-2 mb-4"
             >
-              <BookText className="h-8 w-8 text-primary" />
+              <BookText className="h-8 w-8 text-purple-600" />
               <span className="font-bold text-2xl">Classmates</span>
             </Link>
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
@@ -106,11 +106,7 @@ const Login = () => {
                 id="email"
                 type="email"
                 placeholder="Enter your email"
-                className={`w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                  focusedField === "email"
-                    ? "ring-2 ring-blue-500 border-transparent"
-                    : ""
-                }`}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onFocus={() => setFocusedField("email")}
@@ -131,11 +127,7 @@ const Login = () => {
                 id="password"
                 type="password"
                 placeholder="Create a secure password"
-                className={`w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                  focusedField === "password"
-                    ? "ring-2 ring-blue-500 border-transparent"
-                    : ""
-                }`}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setFocusedField("password")}
@@ -171,7 +163,7 @@ const Login = () => {
             <button
               type="submit"
               onClick={handleLogin}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={loading}
             >
               {loading ? (
