@@ -102,7 +102,7 @@
   box-shadow: 0 6px 30px rgba(16, 185, 129, 0.4);
 }
 
-/* Custom Scrollbar Style
+/* Custom Scrollbar Style */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -118,32 +118,6 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(131, 56, 138, 0.849);
-} */
-
-
-.scrollbar-hover::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  opacity: 0;
 }
 
-/* Show scrollbar on hover */
-.scrollbar-hover:hover::-webkit-scrollbar {
-  opacity: 1;
-}
 
-/* Track background hidden */
-.scrollbar-hover::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Scrollbar thumb style */
-.scrollbar-hover::-webkit-scrollbar-thumb {
-  background-color: #6b7280; /* Tailwind gray-500 */
-  border-radius: 3px;
-}
-
-/* Thumb hover */
-.scrollbar-hover:hover::-webkit-scrollbar-thumb {
-  background-color: #4b5563; /* Tailwind gray-600 */
-}
