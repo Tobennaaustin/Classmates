@@ -79,56 +79,12 @@ const Sidebar = ({ userClasses }) => {
           {/* Divider */}
           <hr className="border-gray-700 my-2 mt-5" />
 
-          {/* <div className="mt-10">
-            <div className="text-xs text-gray-400 uppercase mt-4 mb-3 px-3">
-              My Classes
-            </div>
-
-            {userClasses && userClasses.length > 0 ? (
-              userClasses.map((cls) => (
-                <div className="space-y-3">
-                  <NavLink
-                    key={cls.id}
-                    to={`/class/${cls.id}`}
-                    className={({ isActive }) =>
-                      `transition text-base px-1 py-1 flex items-center space-x-2 p-6 text-gray-300 rounded-md transition${
-                        isActive ? "bg-slate" : "hover:bg-[#83388a]"
-                      }`
-                    }
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-book-text h-6 w-6 text-primary"
-                    >
-                      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path>
-                      <path d="M8 11h8"></path>
-                      <path d="M8 7h6"></path>
-                    </svg>
-                    <span>{cls.name}</span>
-                  </NavLink>
-                </div>
-              ))
-            ) : (
-              <div className="text-sm px-3 py-2 text-gray-500">
-                No classes yet
-              </div>
-            )}
-          </div> */}
-
           <div className="mt-10">
   <div className="text-xs text-gray-400 uppercase mt-4 mb-3 px-3">
     My Classes
   </div>
 
-  <div className="max-h-[300px] overflow-y-auto pr-2 space-y-1">
+  <div className="max-h-[300px] overflow-y-auto pr-2 space-y-1 custom-scrollbar">
     {userClasses && userClasses.length > 0 ? (
       userClasses.map((cls) => (
         <NavLink
